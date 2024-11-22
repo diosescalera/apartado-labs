@@ -1,0 +1,21 @@
+<div class="data-container" *ngIf="users.length > 0">
+    <table>
+        <thead>
+            <tr>
+                <th>ID Usuario</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Activo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.idusuario }}</td>
+                <td>{{ user.nombre }}</td>
+                <td>{{ user.tipo }}</td>
+                <td>{{ user.activo ? 'Sí' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="users.length === 0">No hay usuarios</div>
