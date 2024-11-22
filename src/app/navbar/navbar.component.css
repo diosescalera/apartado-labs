@@ -1,0 +1,22 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--azul);
+    height: 64px;
+}
+
+.logo {
+    height: 64px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-basis: 100%;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+}
