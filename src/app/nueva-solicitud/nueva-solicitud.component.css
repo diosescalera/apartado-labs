@@ -3,6 +3,6 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.form-grid .material {
+.form-grid #material {
     grid-column: span 2;
 }
