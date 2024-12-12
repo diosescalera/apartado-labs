@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   --azul: #002665;
+  --azul-hover: #003a8c;
   --gris: #616161;
 }
 
@@ -11,4 +12,36 @@
 body {
   margin: 0;
   padding: 0;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+.form-container input {
+  padding: 0.6rem;
+  margin: 0.4rem 0.4rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.4rem;
+}
+
+.form-container button {
+  padding: 0.6rem;
+  margin: 0.4rem 0rem;
+  border: none;
+  border-radius: 0.4rem;
+  width: 100%;
+  background-color: var(--azul);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+  background-color: var(--azul-hover);
 }
