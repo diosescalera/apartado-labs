@@ -1,0 +1,17 @@
+<div class="form-container">
+    <p>Registrar una nueva solicitud</p>
+    <form action="">
+        <div class="form-grid">
+            <input type="text" placeholder="Nombre Completo" id="nombre" name="nombre" required>
+            <input type="number" placeholder="ID" id="id" name="id" required>
+            <input type="text" placeholder="Materia" id="materia" name="materia" required>
+            <input type="text" placeholder="Laboratorio" id="laboratorio" name="laboratorio" required>
+            <input type="text" placeholder="Carrera" id="carrera" name="carrera" required>
+            <input type="text" placeholder="Grupo" id="grupo" name="grupo" required>
+            <input type="date" placeholder="Fecha" id="fecha" name="fecha" [min]="minDate" required>
+            <input type="time" placeholder="Hora" id="hora" name="hora" required>
+            <input class="material" type="text" placeholder="Material a solicitar" id="material" name="material" required>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
