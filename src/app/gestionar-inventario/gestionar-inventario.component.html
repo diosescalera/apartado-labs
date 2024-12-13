@@ -1,0 +1,51 @@
+<div class="table-container">
+    <p>Laboratorio #</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Material</th>
+                <th>Fecha de Registro</th>
+                <th>Estado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let campo of campos"> -->
+            <tr>
+                <td>Material 1</td>
+                <td>01/01/2021</td>
+                <td>Buen Estado</td>
+                <td>
+                    <div class="actionButtons">
+                        <button class="edit">Editar</button>
+                        <button class="delete">Eliminar</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Material 2</td>
+                <td>02/02/2022</td>
+                <td>Requiere Mantenimiento</td>
+                <td>
+                    <div class="actionButtons">
+                        <button class="edit">Editar</button>
+                        <button class="delete">Eliminar</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Material 3</td>
+                <td>03/03/2023</td>
+                <td>Fuera de Servicio</td>
+                <td>
+                    <div class="actionButtons">
+                        <button class="edit">Editar</button>
+                        <button class="delete">Eliminar</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button>Añadir</button>
+</div>
+<!-- <div *ngIf="campo.length === 0">No hay Material Registrado</div> -->
