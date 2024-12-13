@@ -76,9 +76,26 @@ body {
 }
 
 .table-container table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin: 0.4rem;
   width: 80%;
+}
+
+.table-container th:first-of-type {
+  border-top-left-radius: 0.8rem;
+}
+
+.table-container th:last-of-type {
+  border-top-right-radius: 0.8rem;
+}
+
+.table-container  tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 0.8rem;
+}
+
+.table-container tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 0.8rem;
 }
 
 .table-container th {
