@@ -8,8 +8,14 @@
             <input type="text" placeholder="Laboratorio" id="laboratorio" name="laboratorio" required>
             <input type="text" placeholder="Carrera" id="carrera" name="carrera" required>
             <input type="text" placeholder="Grupo" id="grupo" name="grupo" required>
-            <input type="date" placeholder="Fecha" id="fecha" name="fecha" [min]="minDate" required>
-            <input type="time" placeholder="Hora" id="hora" name="hora" required>
+            <div class="labeled">
+                <label for="fecha">Fecha</label>
+                <input type="date" placeholder="Fecha" id="fecha" name="fecha" [min]="minDate" required>
+            </div>
+            <div class="labeled">
+                <label for="hora">Hora</label>
+                <input type="time" placeholder="Hora" id="hora" name="hora" required>
+            </div>
             <input type="text" placeholder="Material a solicitar" id="material" name="material" required>
         </div>
         <button type="submit">Enviar</button>
