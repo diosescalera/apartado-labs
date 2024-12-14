@@ -120,9 +120,8 @@ body {
   justify-content: space-evenly;
 }
 
-.actionButtons .edit,
-.actionButtons .delete {
-  flex: 0.3;
+.actionButtons .green,
+.actionButtons .red {
   color: white;
   border: none;
   border-radius: 0.4rem;
@@ -132,10 +131,10 @@ body {
   transition: background-color 0.3s;
 }
 
-.actionButtons .edit {
+.actionButtons .green {
   background-color: #4caf50;
 }
 
-.actionButtons .delete {
+.actionButtons .red {
   background-color: #f44336;
 }
