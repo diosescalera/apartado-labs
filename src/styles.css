@@ -72,14 +72,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  min-height: 85vh;
+  margin: 1rem 0;
 }
 
 .table-container table {
   border-collapse: separate;
   border-spacing: 0;
   margin: 0.4rem;
-  width: 80%;
 }
 
 .table-container th:first-of-type {
@@ -128,6 +128,7 @@ body {
   border-radius: 0.4rem;
   padding: 0.6rem;
   cursor: pointer;
+  margin-inline: 0.4rem;
   transition: background-color 0.3s;
 }
 
@@ -137,9 +138,4 @@ body {
 
 .actionButtons .delete {
   background-color: #f44336;
-}
-
-.table-container button {
-  width: fit-content;
-  padding-inline: 5rem;
 }
