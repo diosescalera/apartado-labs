@@ -1,9 +1,9 @@
 export interface Usuario {
-    _id: string;
-    idusuario: string;
-    tipo: string;
+    idusuario: number;
     nombre: string;
-    activo: boolean;
-    createdAt: string;
-    updatedAt: string;
+    apellido: string;
+    carrera: string;
+    correo: string;
+    tipo: string;
+    activo: number;
 }

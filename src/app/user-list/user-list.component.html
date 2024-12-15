@@ -1,5 +1,5 @@
 <div class="table-container" *ngIf="users.length > 0">
-    <table>
+    <table datatable>
         <thead>
             <tr>
                 <th>ID Usuario</th>
@@ -11,9 +11,9 @@
         <tbody>
             <tr *ngFor="let user of users">
                 <td>{{ user.idusuario }}</td>
-                <td>{{ user.nombre }}</td>
+                <td>{{ user.nombre + ' ' + user.apellido }}</td>
                 <td>{{ user.tipo }}</td>
-                <td>{{ user.activo ? 'Sí' : 'No' }}</td>
+                <td>{{ user.activo ? 'Si' : 'No' }}</td>
             </tr>
         </tbody>
     </table>
