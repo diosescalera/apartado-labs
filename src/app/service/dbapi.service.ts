@@ -13,7 +13,9 @@ export class DbapiService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`${this.baseUrl}usuario/find`);
+  getUsers(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}usuario/get`);
+  }
+
   }
 }

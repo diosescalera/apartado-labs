@@ -18,8 +18,8 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe({
-      next: (data) => {
-        this.users = data;
+      next: (response) => {
+        this.users = response.data;
       },
       error: (error) => {
         console.error('Error fetching users', error);
