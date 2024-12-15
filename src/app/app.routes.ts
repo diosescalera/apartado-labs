@@ -8,6 +8,7 @@ import { CargarHorarioComponent } from "./cargar-horario/cargar-horario.componen
 import { NuevoMaterialComponent } from "./nuevo-material/nuevo-material.component";
 import { GestionarInventarioComponent } from "./gestionar-inventario/gestionar-inventario.component";
 import { DetallesLaboratorioComponent } from "./detalles-laboratorio/detalles-laboratorio.component";
+import { MapComponent } from "./map/map.component";
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -19,4 +20,5 @@ export const routes: Routes = [
     { path: 'nuevo-material', component: NuevoMaterialComponent },
     { path: 'gestionar-inventario', component: GestionarInventarioComponent },
     { path: 'detalles-laboratorio', component: DetallesLaboratorioComponent },
+    { path: 'map', component: MapComponent },
 ];
