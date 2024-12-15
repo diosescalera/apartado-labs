@@ -7,9 +7,9 @@ import { Usuario } from '../interfaces/usuario';
   providedIn: 'root'
 })
 export class DbapiService {
-  private ip = '192.168.50.28'
+  private url = 'localhost'
   private port = '3000'
-  private baseUrl = `http://${this.ip}:${this.port}/glem/`
+  private baseUrl = `http://${this.url}:${this.port}/`
 
   constructor(private http: HttpClient) { }
 
