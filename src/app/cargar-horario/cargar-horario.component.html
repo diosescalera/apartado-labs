@@ -1,28 +1,52 @@
 <div class="form-container">
     <p>Cargar Horario</p>
-    <form action="">
+    <form (submit)="onSubmit($event)">
         <div class="form-grid">
-            <input type="text" placeholder="Nombre Completo" id="nombre" name="nombre" required>
-            <input type="number" placeholder="ID" id="id" name="id" required>
-            <input type="text" placeholder="Carrera" id="carrera" name="carrera" required>
-            <input type="text" placeholder="Materia" id="materia" name="materia" required>
-            <input type="text" placeholder="Grupo" id="grupo" name="grupo" required>
             <div class="labeled">
-                <label for="fechaInicio">Fecha de Inicio</label>
-                <input type="date" placeholder="Fecha de Inicio" id="fechaInicio" name="fechaInicio" required>
+                <label for="usuario">Usuario</label>
+                <select id="usuario" name="usuario" required [(ngModel)]="horario.idusuario">
+                    <option value="" disabled selected>Elige un usuario</option>
+                    <option *ngFor="let usuario of usuarios" [value]="usuario.idusuario">
+                        {{ usuario.nombre }} {{ usuario.apellido }}
+                    </option>
+                </select>
             </div>
             <div class="labeled">
-                <label for="fechaFin">Fecha de Finalización</label>
-                <input type="date" placeholder="Fecha de Finalización" id="fechaFin" name="fechaFin" required>
+                <label for="laboratorio">Laboratorio</label>
+                <select id="laboratorio" name="laboratorio" required [(ngModel)]="horario.idlaboratorio">
+                    <option value="" disabled selected>Elige un laboratorio</option>
+                    <option *ngFor="let labSelect of labsArray; let i = index" [value]="i">
+                        {{ labSelect }}
+                    </option>
+                </select>
             </div>
             <div class="labeled">
                 <label for="hora">Hora</label>
-                <input type="time" placeholder="Hora" id="hora" name="hora" required>
+                <select id="hora" name="hora" required [(ngModel)]="horario.hora_inicio">
+                    <option
+                        *ngFor="let hour of ['7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00']"
+                        [value]="hour">
+                        {{ hour }}
+                    </option>
+                </select>
             </div>
-            <div class="labeled">
-                <label for="frecuencia">Frecuencia</label>
-                <input type="text" placeholder="(Lunes, Martes...)" id="frecuencia" name="frecuencia" required>
+            <div class="labeled" id="labeled-dias">
+                <label for="dias">Dias</label>
+                <div id="dias">
+                    <label><input type="checkbox" name="dias" value="LU" [(ngModel)]="diasSeleccionados[0]">
+                        Lunes</label>
+                    <label><input type="checkbox" name="dias" value="MA" [(ngModel)]="diasSeleccionados[1]">
+                        Martes</label>
+                    <label><input type="checkbox" name="dias" value="MI" [(ngModel)]="diasSeleccionados[2]">
+                        Miercoles</label>
+                    <label><input type="checkbox" name="dias" value="JU" [(ngModel)]="diasSeleccionados[3]">
+                        Jueves</label>
+                    <label><input type="checkbox" name="dias" value="VI" [(ngModel)]="diasSeleccionados[4]">
+                        Viernes</label>
+                </div>
             </div>
+            <input type="text" placeholder="Descripcion" id="descripcion" name="descripcion" required
+                [(ngModel)]="horario.descripcion">
         </div>
         <button type="submit">Cargar</button>
     </form>

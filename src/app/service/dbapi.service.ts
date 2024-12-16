@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { HorarioProfesor } from '../interfaces/horarioProfesor';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,6 @@ export class DbapiService {
     return this.http.get<any>(`${this.baseUrl}prestamo/get/usuario/${id}`);
   }
 
-  // Crear una solicitud
   crearSolicitud(solicitud: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}prestamo/create`, solicitud);
   }
@@ -43,6 +43,22 @@ export class DbapiService {
   // Cancelar una solicitud
   cancelarSolicitud(idprestamo: string): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}prestamo/delete/${idprestamo}/C`);
+  }
+
+  finalizarSolicitud(idprestamo: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}prestamo/delete/${idprestamo}/F`);
+  }
+
+  denegarSolicitud(idprestamo: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}prestamo/delete/${idprestamo}/D`);
+  }
+
+  aceptarSoliciturd(idprestamo: string): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}prestamo/update/${idprestamo}`, {estado: 'A'});
+  }
+
+  cargarHorarioProfesor(horairo: HorarioProfesor): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}horarioProfesores/create`, horairo);
   }
 
   // Login
