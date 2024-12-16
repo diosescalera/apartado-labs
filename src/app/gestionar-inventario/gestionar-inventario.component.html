@@ -1,6 +1,6 @@
 <div class="table-container">
     <p>Laboratorio #</p>
-    <table>
+    <table datatable *ngIf="campos.length > 0">
         <thead>
             <tr>
                 <th>Material</th>
@@ -46,5 +46,5 @@
             </tr>
         </tbody>
     </table>
-    <!-- <div *ngIf="campo.length === 0">No hay Material Registrado</div> -->
+    <div *ngIf="campos.length === 0">No hay Material Registrado</div>
 </div>

@@ -1,6 +1,6 @@
 <div class="table-container">
     <p>Solicitudes Pendientes</p>
-    <table datatable>
+    <table datatable *ngIf="solicitudes.length > 0">
         <thead>
             <tr>
                 <th>ID Usuario</th>
@@ -27,4 +27,5 @@
             </tr>
         </tbody>
     </table>
+    <div *ngIf="solicitudes.length === 0">No hay solicitudes pendientes</div>
 </div>
