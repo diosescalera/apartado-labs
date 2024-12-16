@@ -9,7 +9,7 @@
                         <option value="" disabled selected>Elige un laboratorio</option>
                         <option
                             *ngFor="let labSelect of labsArray; let i = index"
-                            [value]="labsId[i]"
+                            [value]="i"
                         >
                             {{ labSelect }}
                         </option>

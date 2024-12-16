@@ -68,8 +68,19 @@ constructor(private dbapiService: DbapiService, private router: Router) {}
   }
 
   onSubmit(event: Event): void {
+    // Obtener el laboratorio seleccionado
+    const selectedIndex = Number(this.solicitud.idlaboratorio);
+    if (selectedIndex >= 0 && selectedIndex < this.labs.length) {
+      const selectedLab = this.labs[selectedIndex];
+      console.log('Laboratorio seleccionado:', selectedLab);
+
+      // Puedes realizar cualquier operación adicional con `selectedLab` aquí
+      this.solicitud.idlaboratorio = selectedLab._id; // Usar su ID para enviar al backend
+    }
     this.solicitud.horainicio += ':00';
+    console.log('Solicitud:', this.solicitud);
     event.preventDefault();
+    
     this.dbapiService.crearSolicitud(this.solicitud).subscribe({
       next: (response) => {
         if (response.status === 'success') {
