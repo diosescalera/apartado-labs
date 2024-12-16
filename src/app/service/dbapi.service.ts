@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Usuario } from '../interfaces/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +12,18 @@ export class DbapiService {
 
   constructor(private http: HttpClient) { }
 
+  // Obtener todas las solicitudes
   getUsers(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}usuario/get`);
   }
 
-  gerLaboratorios(): Observable<any> {
+  getLaboratorios(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}laboratorio/get`);
   }
 
+  // Obtener solicitudes de un usuario
+  getMisSolicitudes(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}get/usuario/${id}`);
   }
 
+}

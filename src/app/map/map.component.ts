@@ -24,7 +24,7 @@ export class MapComponent implements OnInit {
   constructor(private labService: DbapiService) {}
 
   ngOnInit(): void {
-    this.labService.gerLaboratorios().subscribe({
+    this.labService.getLaboratorios().subscribe({
       next: (response) => {
         console.log('Laboratorios recibidos:', response.data); // Imprimir laboratorios
         this.labs = response.data.map((lab: any) => ({
