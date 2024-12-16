@@ -78,7 +78,6 @@ constructor(private dbapiService: DbapiService, private router: Router) {}
       this.solicitud.idlaboratorio = selectedLab._id; // Usar su ID para enviar al backend
     }
     this.solicitud.horainicio += ':00';
-    console.log('Solicitud:', this.solicitud);
     event.preventDefault();
     
     this.dbapiService.crearSolicitud(this.solicitud).subscribe({
