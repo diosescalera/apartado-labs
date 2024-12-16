@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { InicioComponent } from "./inicio/inicio.component";
 import { LoginComponent } from "./login/login.component";
 import { NuevaSolicitudComponent } from "./nueva-solicitud/nueva-solicitud.component";
 import { MisSolicitudesComponent } from "./mis-solicitudes/mis-solicitudes.component";
@@ -11,6 +12,7 @@ import { DetallesLaboratorioComponent } from "./detalles-laboratorio/detalles-la
 import { MapComponent } from "./map/map.component";
 
 export const routes: Routes = [
+    { path: '', component: InicioComponent },
     { path: 'login', component: LoginComponent },
     { path: 'nueva-solicitud', component: NuevaSolicitudComponent },
     { path: 'mis-solicitudes', component: MisSolicitudesComponent },
