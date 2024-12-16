@@ -14,6 +14,7 @@ export class LoginComponent {
   correo = '';
   password = '';
   errorMessage = '';
+  private adminRole = ['RESPONSABLE', 'AYUDANTE'];
 
   constructor(private dbapiService: DbapiService, private router: Router) {}
 
@@ -22,7 +23,8 @@ export class LoginComponent {
     this.dbapiService.login(this.correo, this.password).subscribe({
       next: (response: any) => {
         if (response.status === 'success') {
-          this.dbapiService.setLoginStatus(true);
+          const isAdmin: boolean = this.adminRole.includes(response.data.tipo);
+          this.dbapiService.setLoginStatus(true, isAdmin);
           localStorage.setItem('token', response.token);
           localStorage.setItem('user', JSON.stringify(response.data));
           this.router.navigate(['/']);

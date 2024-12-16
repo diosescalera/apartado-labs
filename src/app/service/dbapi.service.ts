@@ -6,11 +6,14 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DbapiService {
+  private adminRoles = ['RESPONSABLE', 'AYUDANTE'];
   private isLoggedIn = false;
+  private isAdmin = false;
   private url = 'localhost'
   private port = '3000'
   private baseUrl = `http://${this.url}:${this.port}/`
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn);
+  private isAdminSubject = new BehaviorSubject<boolean>(this.isAdmin);
 
   constructor(private http: HttpClient) { }
 
@@ -49,21 +52,31 @@ export class DbapiService {
         next: (response) => {
           if (response.status === 'success') {
             this.isLoggedIn = true;
+            this.isAdmin = this.adminRoles.includes(response.data.tipo);
             this.isLoggedInSubject.next(true);
+            this.isAdminSubject.next(this.isAdmin);
           }
         },
         error: (error) => {
           localStorage.clear();
           this.isLoggedIn = false;
+          this.isAdmin = false;
           this.isLoggedInSubject.next(false);
+          this.isAdminSubject.next(false);
         },
       });
     }
     return this.isLoggedInSubject.asObservable();
   }
 
-  setLoginStatus(status: boolean): void {
+  getAdminStatus(): Observable<boolean> {
+    return this.isAdminSubject.asObservable();
+  }
+
+  setLoginStatus(status: boolean, isAdmin: boolean): void {
     this.isLoggedIn = status;
     this.isLoggedInSubject.next(status);
+    this.isAdmin = isAdmin;
+    this.isAdminSubject.next(isAdmin);
   }
 }

@@ -12,9 +12,9 @@ import { DbapiService } from '../service/dbapi.service';
 
 export class NavbarComponent implements OnInit {
   isLoggedIn = false;
+  isAdmin = false;
 
   constructor(private labService: DbapiService) {}
-
 
   ngOnInit(): void {
     this.labService.getLoginStatus().subscribe({
@@ -25,6 +25,15 @@ export class NavbarComponent implements OnInit {
         console.error('Error fetching login status', error);
       },
     });
+
+    this.labService.getAdminStatus().subscribe({
+      next: (response) => {
+        this.isAdmin = response;
+      },
+      error: (error) => {
+        console.error('Error fetching admin status', error);
+      },
+    });
     
     this.isLoggedIn = !!localStorage.getItem('token');
   }
@@ -32,5 +41,6 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     localStorage.clear();
     this.isLoggedIn = false;
+    this.isAdmin = false;
   }
 }

@@ -4,6 +4,7 @@
     background-color: var(--azul);
     height: 64px;
     justify-content: space-between;
+    padding-right: 2rem;
 }
 
 .logo {
@@ -13,6 +14,7 @@
 .links {
     display: flex;
     align-items: center;
+    width: min-content;
 }
 
 .links a {

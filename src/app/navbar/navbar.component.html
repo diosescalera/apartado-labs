@@ -4,15 +4,19 @@
   </a>
   <div class="links">
     <!-- Usuario -->
-    <a href="/nueva-solicitud">Nueva Solicitud</a>
-    <a href="/mis-solicitudes">Mis Solicitudes</a>
+    <ng-container *ngIf="isLoggedIn && !isAdmin">
+      <a href="/nueva-solicitud">Nueva Solicitud</a>
+      <a href="/mis-solicitudes">Mis Solicitudes</a>
+    </ng-container>
     <!-- Administrador -->
-    <a href="/solicitudes-pendientes">Solicitudes Pendientes</a>
-    <a href="/solicitudes-aprobadas">Solicitudes Aprobadas</a>
-    <a href="/cargar-horario">Cargar Horario</a>
-    <a href="/nuevo-material">Nuevo Material</a>
-    <a href="/gestionar-inventario">Gestionar Inventario</a>
-    <a href="/detalles-laboratorio">Detalles Laboratorio</a>
+    <ng-container *ngIf="isLoggedIn && isAdmin">
+      <a href="/solicitudes-pendientes">Solicitudes Pendientes</a>
+      <a href="/solicitudes-aprobadas">Solicitudes Aprobadas</a>
+      <a href="/cargar-horario">Cargar Horario</a>
+      <a href="/nuevo-material">Nuevo Material</a>
+      <a href="/gestionar-inventario">Gestionar Inventario</a>
+      <a href="/detalles-laboratorio">Detalles Laboratorio</a>
+    </ng-container>
     <ng-container *ngIf="!isLoggedIn">
       <a href="/login">Iniciar Sesión</a>
     </ng-container>

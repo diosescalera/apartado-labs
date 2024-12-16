@@ -17,7 +17,7 @@ export class LogoutComponent {
     this.dbapiService.logout(token).subscribe({
       next: (response: any) => {
         if (response.status === 'success') {
-          this.dbapiService.setLoginStatus(false);
+          this.dbapiService.setLoginStatus(false,false);
           localStorage.clear();
           this.router.navigate(['/']);
         }
