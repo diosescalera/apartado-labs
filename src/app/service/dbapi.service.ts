@@ -10,8 +10,8 @@ export class DbapiService {
   private adminRoles = ['RESPONSABLE', 'AYUDANTE'];
   private isLoggedIn = false;
   private isAdmin = false;
-  private url = 'nq6pfh4p-4000.usw3.devtunnels.ms'
-  private baseUrl = `https://${this.url}/`
+  private url = 'http://192.168.50.28:3000'
+  private baseUrl = `${this.url}/`
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn);
   private isAdminSubject = new BehaviorSubject<boolean>(this.isAdmin);
 
