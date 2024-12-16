@@ -9,9 +9,8 @@ export class DbapiService {
   private adminRoles = ['RESPONSABLE', 'AYUDANTE'];
   private isLoggedIn = false;
   private isAdmin = false;
-  private url = 'localhost'
-  private port = '3000'
-  private baseUrl = `http://${this.url}:${this.port}/`
+  private url = 'nq6pfh4p-4000.usw3.devtunnels.ms'
+  private baseUrl = `https://${this.url}/`
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn);
   private isAdminSubject = new BehaviorSubject<boolean>(this.isAdmin);
 
@@ -29,6 +28,11 @@ export class DbapiService {
   // Obtener solicitudes de un usuario
   getMisSolicitudes(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}get/usuario/${id}`);
+  }
+
+  // Crear una solicitud
+  crearSolicitud(solicitud: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}prestamo/create`, solicitud);
   }
 
   // Login

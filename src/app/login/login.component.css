@@ -1,13 +1,7 @@
 .form-container input {
-    min-width: 16rem;
+    min-width: 18rem;
 }
 
 .form-grid input {
     grid-column: span 2;
-}
-
-.error-message {
-    color: red;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
 }

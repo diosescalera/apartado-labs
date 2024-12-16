@@ -1,3 +1,4 @@
-.form-grid #material {
+.form-grid #labeled-laboratorio,
+.form-grid #observaciones{
     grid-column: span 2;
 }

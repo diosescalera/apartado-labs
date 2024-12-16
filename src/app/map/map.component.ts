@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './map.component.html',
   styleUrl: './map.component.css',
 })
-export class MapComponent implements OnInit {
+export class MapComponent {
   //Obtener laboratorios
   labs: Laboratorio[] = [];
   markerPositions: google.maps.LatLngLiteral[] = [];

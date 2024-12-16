@@ -22,7 +22,8 @@ body {
   min-height: 90vh;
 }
 
-.form-container input {
+.form-container input,
+.form-container select {
   padding: 0.6rem;
   margin: 0.4rem 0.4rem;
   border: 0.1rem solid #ccc;
@@ -61,13 +62,25 @@ body {
   margin-top: 0.4rem;
 }
 
-.labeled input {
+.labeled input,
+.labeled select {
   margin-top: 0.1rem;
 }
 
 .form-container button:hover,
 .table-container button:hover {
   background-color: var(--azul-hover);
+}
+
+.map-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.map {
+  margin-left: 2rem;
 }
 
 .table-container {
@@ -140,4 +153,16 @@ body {
 
 .actionButtons .red {
   background-color: #f44336;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.success-message {
+  color: green;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }

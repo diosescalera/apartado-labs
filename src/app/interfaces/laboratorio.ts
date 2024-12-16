@@ -1,4 +1,5 @@
 export interface Laboratorio {
+  _id: string;
   idlaboratorio: number;
   plantel: string | null;
   num_ed: number;
