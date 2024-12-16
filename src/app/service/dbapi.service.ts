@@ -17,5 +17,9 @@ export class DbapiService {
     return this.http.get<any>(`${this.baseUrl}usuario/get`);
   }
 
+  gerLaboratorios(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}laboratorio/get`);
   }
-}
+
+  }
+

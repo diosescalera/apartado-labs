@@ -10,7 +10,28 @@
     ></script>
   </head>
   <body>
-    <div class="labs"></div>
+    <div>
+      <!-- <form #f="ngForm">
+        <select name="state" ngModel>
+          <option value="" disabled>Elige un laboratorio</option>
+          <option *ngFor="let labSelect of labsArray" [value]="labSelect">
+            {{ labSelect }}
+          </option>
+        </select>
+      </form> -->
+
+      <form #f="ngForm">
+        <select name="state" ngModel (ngModelChange)="onLabChange($event)">
+          <option value="" disabled selected>Elige un laboratorio</option>
+          <option
+            *ngFor="let labSelect of labsArray; let i = index"
+            [value]="i"
+          >
+            {{ labSelect }}
+          </option>
+        </select>
+      </form>
+    </div>
     <div class="map">
       <!-- google-maps-demo.component.html -->
       <google-map height="500px" width="800px" [center]="center" [zoom]="zoom">
