@@ -1,14 +1,13 @@
-.form-container input, button {
-    margin: 0.4rem 0;
+.form-container input {
+    min-width: 16rem;
 }
 
-.form-container input[type="password"] {
-    width: 100%;
+.form-grid input {
+    grid-column: span 2;
 }
 
-.info-links a {
-    margin-top: 10px;
-    text-decoration: none;
-    padding: 1rem;
-    color: var(--gris);
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
 }

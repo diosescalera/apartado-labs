@@ -1,19 +1,11 @@
 <div class="form-container">
     <p>Inicio de Sesión</p>
-    <form action="">
-        <div class="email">
-            <input type="email" placeholder="Usuario" id="email" name="email" required>
-            <span>&#64;edu.uaa.mx</span>
+    <form (submit)="onLogin($event)">
+        <div class="form-grid">
+            <input type="email" placeholder="Correo" id="correo" name="correo" required [(ngModel)]="correo">
+            <input type="password" placeholder="Contraseña" id="password" name="password" required [(ngModel)]="password">
         </div>
-
-        <div class="password">
-            <input type="password" placeholder="Contraseña" id="password" name="password" required>
-        </div>
-
         <button type="submit">Entrar</button>
     </form>
-    <div class="info-links">
-        <a href="#">¿Eres un maestro?</a>
-        <a href="#">¿Eres un administrador?</a>
-    </div>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 </div>

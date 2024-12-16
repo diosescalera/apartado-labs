@@ -13,7 +13,12 @@
     <a href="/nuevo-material">Nuevo Material</a>
     <a href="/gestionar-inventario">Gestionar Inventario</a>
     <a href="/detalles-laboratorio">Detalles Laboratorio</a>
-    <a href="/login">Iniciar Sesión</a>
+    <ng-container *ngIf="!isLoggedIn">
+      <a href="/login">Iniciar Sesión</a>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn">
+      <a href="/logout">Cerrar Sesión</a>
+    </ng-container>
   </div>
 </nav>
 <router-outlet></router-outlet>
