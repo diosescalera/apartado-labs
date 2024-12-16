@@ -26,6 +26,10 @@ export class DbapiService {
     return this.http.get<any>(`${this.baseUrl}laboratorio/get`);
   }
 
+  updateLaboratorio(id: string, laboratorio: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}laboratorio/update/${id}`, laboratorio);
+  }
+
   //Obtener todos los prestamos
   getPrestamos():Observable<any> {
     return this.http.get<any>(`${this.baseUrl}prestamo/get`);

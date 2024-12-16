@@ -5,42 +5,43 @@
             <div class="form-grid">
                 <div class="labeled" id="labeled-laboratorio">
                     <label for="laboratorio">Laboratorio</label>
-                    <select id="laboratorio" ngModel name="idlaboratorio" required (ngModelChange)="onLabChange($event)" [(ngModel)]="solicitud.idlaboratorio">
+                    <select id="laboratorio" ngModel name="idlaboratorio" required (ngModelChange)="onLabChange($event)"
+                        [(ngModel)]="solicitud.idlaboratorio">
                         <option value="" disabled selected>Elige un laboratorio</option>
-                        <option
-                            *ngFor="let labSelect of labsArray; let i = index"
-                            [value]="i"
-                        >
+                        <option *ngFor="let labSelect of labsArray; let i = index" [value]="i">
                             {{ labSelect }}
                         </option>
                     </select>
-                    
                 </div>
                 <div class="labeled">
                     <label for="fecha">Fecha</label>
-                    <input type="date" placeholder="Fecha" id="fecha" name="fecha" [min]="minDate" required [(ngModel)]="solicitud.fecha">
+                    <input type="date" placeholder="Fecha" id="fecha" name="fecha" [min]="minDate" required
+                        [(ngModel)]="solicitud.fecha">
                 </div>
                 <div class="labeled">
                     <label for="hora">Hora</label>
                     <select id="hora" name="hora" required [(ngModel)]="solicitud.horainicio">
-                        <option *ngFor="let hour of ['7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00']" [value]="hour">
+                        <option
+                            *ngFor="let hour of ['7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00']"
+                            [value]="hour">
                             {{ hour }}
                         </option>
                     </select>
                 </div>
-                <input type="text" placeholder="Observaciones" id="observaciones" name="observaciones" required [(ngModel)]="solicitud.observaciones">
+                <input type="text" placeholder="Observaciones" id="observaciones" name="observaciones" required
+                    [(ngModel)]="solicitud.observaciones">
             </div>
             <button type="submit">Enviar</button>
         </form>
-    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+        <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
     </div>
     <div class="map">
         <!-- google-maps-demo.component.html -->
         <google-map height="250px" width="400px" [center]="center" [zoom]="zoom">
-        @for (position of markerPositions; track position) {
-        <map-marker [position]="position" [options]="markerOptions" />
-        }
+            @for (position of markerPositions; track position) {
+            <map-marker [position]="position" [options]="markerOptions" />
+            }
         </google-map>
     </div>
 </div>
