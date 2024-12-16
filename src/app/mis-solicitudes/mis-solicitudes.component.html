@@ -1,6 +1,6 @@
 <div class="table-container">
     <p>Mis solicitudes</p>
-    <table>
+    <table datatable *ngIf="Solicitudes.length > 0">
         <thead>
             <tr>
                 <th>Laboratorio</th>
@@ -11,52 +11,25 @@
             </tr>
         </thead>
         <tbody>
-            <!-- <tr *ngFor="let campo of campos"> -->
-            <tr>
-                <td>1A</td>
-                <td>01/01/2021</td>
-                <td>11:00</td>
-                <td>Finalizado</td>
+            <tr *ngFor="let solicitud of Solicitudes">
+                <td>{{ solicitud.laboratorio.departamento + '-' + solicitud.laboratorio.num_ed +
+                    (solicitud.laboratorio.aula ?? '')
+                    }}</td>
+                <td>{{ solicitud.fecha }}</td>
+                <td>{{ formatearHora(solicitud.horainicio) }}</td>
+                <td>{{ solicitud.estado | estado }}</td>
                 <td>
                     <div class="actionButtons">
-                        <button class="red">Cancelar</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>2B</td>
-                <td>02/02/2022</td>
-                <td>12:00</td>
-                <td>Aceptado</td>
-                <td>
-                    <div class="actionButtons">
-                        <button class="red">Cancelar</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>3C</td>
-                <td>03/03/2023</td>
-                <td>13:00</td>
-                <td>Pendiente</td>
-                <td>
-                    <div class="actionButtons">
-                        <button class="red">Cancelar</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>4D</td>
-                <td>04/04/2024</td>
-                <td>14:00</td>
-                <td>Negado</td>
-                <td>
-                    <div class="actionButtons">
-                        <button class="red">Cancelar</button>
+                        <ng-container *ngIf="solicitud.estado === 'P'">
+                            <button class="red" (click)="cancelarSolicitud(solicitud._id)">Canelar</button>
+                        </ng-container>
+                        <ng-container *ngIf="solicitud.estado !== 'P'">
+                            N/A
+                        </ng-container>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-    <!-- <div *ngIf="campo.length === 0">No hay solicitudes</div> -->
+    <div *ngIf="Solicitudes.length === 0">No hay solicitudes</div>
 </div>

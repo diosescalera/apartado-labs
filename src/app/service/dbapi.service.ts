@@ -25,14 +25,24 @@ export class DbapiService {
     return this.http.get<any>(`${this.baseUrl}laboratorio/get`);
   }
 
+  //Obtener todos los prestamos
+  getPrestamos():Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}prestamo/get`);
+  }
+
   // Obtener solicitudes de un usuario
   getMisSolicitudes(id: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}get/usuario/${id}`);
+    return this.http.get<any>(`${this.baseUrl}prestamo/get/usuario/${id}`);
   }
 
   // Crear una solicitud
   crearSolicitud(solicitud: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}prestamo/create`, solicitud);
+  }
+
+  // Cancelar una solicitud
+  cancelarSolicitud(idprestamo: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}prestamo/delete/${idprestamo}/C`);
   }
 
   // Login

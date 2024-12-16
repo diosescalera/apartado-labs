@@ -56,7 +56,7 @@ constructor(private dbapiService: DbapiService, private router: Router) {}
 
         // Crear el arreglo formateado para el select
         this.labsArray = this.labs.map(
-          (lab) => `${lab.departamento} ${lab.num_ed} ${lab.aula}`
+          (lab) => `${lab.departamento} ${lab.num_ed} ${lab.aula ?? ''}`
         );
 
         this.labsId = this.labs.map((lab) => lab._id);
