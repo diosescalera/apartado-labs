@@ -16,6 +16,7 @@ import { error, event } from 'jquery';
 })
 export class NuevaSolicitudComponent {
   minDate!: string;
+  solExistente = false;
   errorMessage = '';
   successMessage = '';
   solicitud = {
@@ -68,13 +69,38 @@ constructor(private dbapiService: DbapiService, private router: Router) {}
   }
 
   onSubmit(event: Event): void {
+    event.preventDefault();
+    this.checkExistingRequest();
+  }
+
+  checkExistingRequest(): void {
+    this.dbapiService.getPrestamos().subscribe({
+      next: (response) => {
+        let exists = false;
+        // Mostrar la fecha y hora de inicio de cada préstamo
+        for (const prestamo of response.data) {
+          if (prestamo.idlaboratorio === Number(this.solicitud.idlaboratorio)+1 && prestamo.fecha.split('T')[0] === this.solicitud.fecha && prestamo.horaInicio === this.solicitud.horainicio+':00') {
+            exists = true;
+            break;
+          }
+        }
+        if (exists) {
+          this.errorMessage = 'Ya existe una solicitud para este laboratorio en la fecha y hora seleccionadas.';
+        } else {
+          this.createRequest();
+        }
+      },
+      error: (error) => {
+        console.error('Error fetching prestamos', error);
+      },
+    });
+  }
+
+  createRequest(): void {
     // Obtener el laboratorio seleccionado
     const selectedIndex = Number(this.solicitud.idlaboratorio);
     if (selectedIndex >= 0 && selectedIndex < this.labs.length) {
       const selectedLab = this.labs[selectedIndex];
-      console.log('Laboratorio seleccionado:', selectedLab);
-
-      // Puedes realizar cualquier operación adicional con `selectedLab` aquí
       this.solicitud.idlaboratorio = selectedLab.idlaboratorio; // Usar su ID para enviar al backend
     }
     // Formatear la hora a HH:MM:SS
@@ -82,7 +108,6 @@ constructor(private dbapiService: DbapiService, private router: Router) {}
       this.solicitud.horainicio = '0' + this.solicitud.horainicio;
     }
     this.solicitud.horainicio += ':00';
-    event.preventDefault();
     console.log('Solicitud:', this.solicitud);
     this.dbapiService.crearSolicitud(this.solicitud).subscribe({
       next: (response) => {
@@ -100,7 +125,6 @@ constructor(private dbapiService: DbapiService, private router: Router) {}
       },
     });
   }
-
 
   onLabChange(selectedIndex: number): void {
     if (selectedIndex >= 0 && selectedIndex < this.labs.length) {
@@ -120,7 +144,6 @@ constructor(private dbapiService: DbapiService, private router: Router) {}
         },
       ];
   
-      console.log(`Laboratorio seleccionado:`, selectedLab);
     }
   }
 
@@ -132,7 +155,6 @@ updateMarkers() {
     lat: lab.latitude,
     lng: lab.longitude,
   }));
-  console.log('Marcadores actualizados:', this.markerPositions);
 }
 
 //Configuración del mapa
