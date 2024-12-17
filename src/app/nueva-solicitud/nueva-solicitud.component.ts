@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { GoogleMap, MapMarker } from '@angular/google-maps';
 import { Laboratorio } from '../interfaces/laboratorio';
 import { DbapiService } from '../service/dbapi.service';
-import { event } from 'jquery';
+import { error, event } from 'jquery';
 
 
 @Component({
@@ -31,7 +31,7 @@ export class NuevaSolicitudComponent {
 labs: Laboratorio[] = [];
 markerPositions: google.maps.LatLngLiteral[] = [];
 labsArray: string[] = []; // Nuevo arreglo para el select
-labsId: string[] = [];
+labsId: Number[] = [];
 
 constructor(private dbapiService: DbapiService, private router: Router) {}
 
@@ -59,7 +59,7 @@ constructor(private dbapiService: DbapiService, private router: Router) {}
           (lab) => `${lab.departamento} ${lab.num_ed} ${lab.aula ?? ''}`
         );
 
-        this.labsId = this.labs.map((lab) => lab._id);
+        this.labsId = this.labs.map((lab) => lab.idlaboratorio);
       },
       error: (error) => {
         console.error('Error fetching users', error);
@@ -75,22 +75,28 @@ constructor(private dbapiService: DbapiService, private router: Router) {}
       console.log('Laboratorio seleccionado:', selectedLab);
 
       // Puedes realizar cualquier operación adicional con `selectedLab` aquí
-      this.solicitud.idlaboratorio = selectedLab._id; // Usar su ID para enviar al backend
+      this.solicitud.idlaboratorio = selectedLab.idlaboratorio; // Usar su ID para enviar al backend
+    }
+    // Formatear la hora a HH:MM:SS
+    if (this.solicitud.horainicio.length === 4) {
+      this.solicitud.horainicio = '0' + this.solicitud.horainicio;
     }
     this.solicitud.horainicio += ':00';
     event.preventDefault();
-    
+    console.log('Solicitud:', this.solicitud);
     this.dbapiService.crearSolicitud(this.solicitud).subscribe({
       next: (response) => {
         if (response.status === 'success') {
+          this.errorMessage = '';
           this.successMessage = 'Solicitud creada exitosamente.';
           setTimeout(() => {
             this.router.navigate(['/mis-solicitudes']);
           }, 3000);
         }
       },
-      error: () => {
+      error: (error) => {
         this.errorMessage = 'Error al crear la solicitud.';
+        console.error('Error creating solicitud', error);
       },
     });
   }

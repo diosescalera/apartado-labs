@@ -32,7 +32,7 @@ export class DbapiService {
 
   // Actualizar un laboratorio existente
   // Endpoint backend: /laboratorio/update/:id
-  updateLaboratorio(id: string, laboratorio: any): Observable<any> {
+  updateLaboratorio(id: Number, laboratorio: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}laboratorio/update/${id}`, laboratorio);
   }
 
@@ -56,25 +56,25 @@ export class DbapiService {
 
   // Cancelar una solicitud de préstamo (cambiar estado a "Cancelado")
   // Endpoint backend: /prestamo/delete/:id/:estado
-  cancelarSolicitud(idprestamo: string): Observable<any> {
+  cancelarSolicitud(idprestamo: Number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}prestamo/delete/${idprestamo}/C`);
   }
 
   // Finalizar una solicitud de préstamo (cambiar estado a "Finalizado")
   // Endpoint backend: /prestamo/delete/:id/:estado
-  finalizarSolicitud(idprestamo: string): Observable<any> {
+  finalizarSolicitud(idprestamo: Number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}prestamo/delete/${idprestamo}/F`);
   }
 
   // Denegar una solicitud de préstamo (cambiar estado a "Denegado")
   // Endpoint backend: /prestamo/delete/:id/:estado
-  denegarSolicitud(idprestamo: string): Observable<any> {
+  denegarSolicitud(idprestamo: Number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}prestamo/delete/${idprestamo}/D`);
   }
 
   // Aceptar una solicitud de préstamo (cambiar estado a "Aceptado")
   // Endpoint backend: /prestamo/update/:id
-  aceptarSolicitud(idprestamo: string): Observable<any> {
+  aceptarSolicitud(idprestamo: Number): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}prestamo/update/${idprestamo}`, { estado: 'A' });
   }
 

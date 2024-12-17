@@ -12,16 +12,16 @@
         </thead>
         <tbody>
             <tr *ngFor="let solicitud of Solicitudes">
-                <td>{{ solicitud.laboratorio.departamento + '-' + solicitud.laboratorio.num_ed +
-                    (solicitud.laboratorio.aula ?? '')
+                <td>{{ solicitud.departamento + '-' + solicitud.num_ed +
+                    (solicitud.aula ?? '')
                     }}</td>
-                <td>{{ solicitud.fecha }}</td>
-                <td>{{ formatearHora(solicitud.horainicio) }}</td>
+                <td>{{ solicitud.fecha.split('T')[0] }}</td>
+                <td>{{ formatearHora(solicitud.horaInicio) }}</td>
                 <td>{{ solicitud.estado | estado }}</td>
                 <td>
                     <div class="actionButtons">
-                        <ng-container *ngIf="solicitud.estado === 'P'">
-                            <button class="red" (click)="cancelarSolicitud(solicitud._id)">Canelar</button>
+                        <ng-container *ngIf="solicitud.estado === 'P' || solicitud.estado === 'A'">
+                            <button class="red" (click)="cancelarSolicitud(solicitud.idprestamo)">Canelar</button>
                         </ng-container>
                         <ng-container *ngIf="solicitud.estado !== 'P'">
                             N/A

@@ -29,11 +29,11 @@ export class SolicitudesPendientesComponent implements OnInit {
     });
   }
 
-  aceptarSolicitud(idprestamo: string): void {
-    this.dbapiService.aceptarSoliciturd(idprestamo).subscribe({
+  aceptarSolicitud(idprestamo: Number): void {
+    this.dbapiService.aceptarSolicitud(idprestamo).subscribe({
       next: (response) => {
         console.log('Solicitud aceptada', response);
-        const solicitud = this.solicitudes.find(s => s._id === idprestamo);
+        const solicitud = this.solicitudes.find(s => s.idprestamo === idprestamo);
         if (solicitud) {
           solicitud.estado = 'A';
         }
@@ -51,11 +51,11 @@ export class SolicitudesPendientesComponent implements OnInit {
     return `${hh}:${mm}`;
   }
 
-  rechazarSolicitud(idprestamo: string): void {
+  rechazarSolicitud(idprestamo: Number): void {
     this.dbapiService.denegarSolicitud(idprestamo).subscribe({
       next: (response) => {
         console.log('Solicitud rechazada', response);
-        const solicitud = this.solicitudes.find(s => s._id === idprestamo);
+        const solicitud = this.solicitudes.find(s => s.idprestamo === idprestamo);
         if (solicitud) {
           solicitud.estado = 'D';
         }

@@ -40,11 +40,11 @@ export class MisSolicitudesComponent implements OnInit {
     return `${hh}:${mm}`;
   }
 
-  cancelarSolicitud(idprestamo: string): void {
+  cancelarSolicitud(idprestamo: Number): void {
     this.dbapiService.cancelarSolicitud(idprestamo).subscribe({
       next: (response) => {
         console.log('Solicitud cancelada', response);
-        const solicitud = this.Solicitudes.find(s => s._id === idprestamo);
+        const solicitud = this.Solicitudes.find(s => s.idprestamo === idprestamo);
         if (solicitud) {
           solicitud.estado = 'Cancelado';
         }

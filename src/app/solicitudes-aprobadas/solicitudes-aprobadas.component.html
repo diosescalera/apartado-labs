@@ -14,14 +14,16 @@
         <tbody>
             <tr *ngFor="let solicitud of solicitudes">
                 <td>{{ solicitud.idusuario }}</td>
-                <td>{{ solicitud.fecha }}</td>
-                <td>{{ formatearHora(solicitud.horainicio) }}</td>
+                <td>{{ solicitud.fecha.split('T')[0] }}</td>
+                <td>{{ formatearHora(solicitud.horaInicio) }}</td>
                 <td>{{ solicitud.estado | estado }}</td>
                 <td>{{ solicitud.observaciones }}</td>
                 <td>
                     <div class="actionButtons">
-                        <button *ngIf="isCancelable(solicitud.fecha, solicitud.horainicio)" class="red" (click)="cancelarSolicitud(solicitud._id)">Cancelar</button>
-                        <button *ngIf="!isCancelable(solicitud.fecha, solicitud.horainicio)" class="green" (click)="finalizarSolicitud(solicitud._id)">Finalizar</button>
+                        <button *ngIf="isCancelable(solicitud.fecha, solicitud.horaInicio)" class="red"
+                            (click)="cancelarSolicitud(solicitud.idprestamo)">Cancelar</button>
+                        <button *ngIf="!isCancelable(solicitud.fecha, solicitud.horaInicio)" class="green"
+                            (click)="finalizarSolicitud(solicitud.idprestamo)">Finalizar</button>
                     </div>
                 </td>
             </tr>

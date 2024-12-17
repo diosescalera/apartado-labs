@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
 export class DetallesLaboratorioComponent  {
   laboratorios: Laboratorio[] = [];
   labsArray: string[] = [];
-  labsId: string[] = [];
+  labId = 0;
+  labsId: Number[] = [];
   solicitud  = {
     idlaboratorio: 0,
     plantel: '',
@@ -24,7 +25,6 @@ export class DetallesLaboratorioComponent  {
     cupo: 0,
     descripcion: '',
   };
-
 
   constructor(private dbapiService: DbapiService) {}
 
@@ -37,7 +37,7 @@ export class DetallesLaboratorioComponent  {
       this.labsArray = this.laboratorios.map(
         (lab) => `${lab.departamento} ${lab.num_ed} ${lab.aula ?? ''}`
       );
-      this.labsId = this.laboratorios.map((lab) => lab._id);
+      this.labsId = this.laboratorios.map((lab) => lab.idlaboratorio);
       console.log(this.labsArray);
       },
       error: (error) => {
@@ -46,19 +46,11 @@ export class DetallesLaboratorioComponent  {
     });
   }
 
-
-
   onSubmit(event: Event) {
     event.preventDefault();
-    const selectedIndex = Number(this.solicitud._id);
-    if (selectedIndex >= 0 && selectedIndex < this.laboratorios.length) {
-      const selectedLab = this.laboratorios[selectedIndex];
-      console.log('Laboratorio seleccionado:', selectedLab);
-
-      this.solicitud._id = selectedLab._id; 
-    }
-    console.log(this.solicitud);
-    this.dbapiService.updateLaboratorio(this.solicitud._id, this.solicitud).subscribe({
+    
+    console.log('Solicitud:', this.solicitud);
+    this.dbapiService.updateLaboratorio(this.labId, this.solicitud).subscribe({
       next: (response) => {
         console.log('Laboratorio actualizado:', response);
       },
@@ -71,7 +63,8 @@ export class DetallesLaboratorioComponent  {
   onLabChange(selectedIndex: number): void {
     if (selectedIndex >= 0 && selectedIndex < this.laboratorios.length) {
       const selectedLab = this.laboratorios[selectedIndex];
-      this.solicitud._id = selectedLab._id;
+      this.labId = selectedLab.idlaboratorio;
+      this.solicitud.idlaboratorio = selectedLab.idlaboratorio;
       this.solicitud.plantel = selectedLab.plantel ?? '';
       this.solicitud.num_ed = selectedLab.num_ed;
       this.solicitud.aula = selectedLab.aula ?? '';

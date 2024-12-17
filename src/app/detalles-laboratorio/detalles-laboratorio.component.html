@@ -5,22 +5,19 @@
             <div class="labeled" id="labeled-laboratorio">
                 <label for="laboratorio">Laboratorio</label>
                 <select id="laboratorio" ngModel name="idlaboratorio" required (ngModelChange)="onLabChange($event)"
-                    [(ngModel)]="solicitud._id">
+                    [(ngModel)]="solicitud.idlaboratorio">
                     <option value="" disabled selected>Elige un laboratorio</option>
                     <option *ngFor="let labSelect of labsArray; let i = index" [value]="i">
                         {{ labSelect }}
                     </option>
                 </select>
             </div>
-            <input type="text" placeholder="Plantel" id="plantel" name="plantel" required [value]="solicitud?.plantel">
-            <input type="text" placeholder="Número de Edificio" id="numeroEdificio" name="numeroEdificio" required
-                [value]="solicitud?.num_ed">
-            <input type="text" placeholder="Aula" id="aula" name="aula" required [value]="solicitud?.aula">
-            <input type="text" placeholder="Departamento" id="departamento" name="departamento" required
-                [value]="solicitud?.departamento">
-            <input type="number" placeholder="Cupo" id="cupo" name="cupo" required [value]="solicitud?.cupo">
-            <input type="text" placeholder="Observaciones" id="observaciones" name="observaciones" required
-                [value]="solicitud.descripcion">
+            <input type="text" placeholder="Plantel" id="plantel" name="plantel" required [(ngModel)]="solicitud.plantel">
+            <input type="text" placeholder="Número de Edificio" id="numeroEdificio" name="numeroEdificio" required [(ngModel)]="solicitud.num_ed">
+            <input type="text" placeholder="Aula" id="aula" name="aula" required [(ngModel)]="solicitud.aula">
+            <input type="text" placeholder="Departamento" id="departamento" name="departamento" required [(ngModel)]="solicitud.departamento">
+            <input type="number" placeholder="Cupo" id="cupo" name="cupo" required [(ngModel)]="solicitud.cupo">
+            <input type="text" placeholder="Observaciones" id="observaciones" name="observaciones" required [(ngModel)]="solicitud.descripcion">
         </div>
         <button type="submit">Guardar</button>
     </form>

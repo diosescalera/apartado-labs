@@ -29,11 +29,11 @@ export class SolicitudesAprobadasComponent implements OnInit {
     });
   }
 
-  cancelarSolicitud(idprestamo: string): void {
+  cancelarSolicitud(idprestamo: Number): void {
     this.dbapiService.cancelarSolicitud(idprestamo).subscribe({
       next: (response) => {
         console.log('Solicitud cancelada', response);
-        const solicitud = this.solicitudes.find(s => s._id === idprestamo);
+        const solicitud = this.solicitudes.find(s => s.idprestamo === idprestamo);
         if (solicitud) {
           solicitud.estado = 'Cancelado';
         }
@@ -51,17 +51,17 @@ export class SolicitudesAprobadasComponent implements OnInit {
     return `${hh}:${mm}`;
   }
 
-  isCancelable(fecha: Date, horainicio: string): boolean {
+  isCancelable(fecha: string, horainicio: string): boolean {
     const solicitudDateTime = new Date(fecha + 'T' + horainicio);
     const currentDateTime = new Date();
     return solicitudDateTime > currentDateTime;
   }
 
-  finalizarSolicitud(id: string) {
+  finalizarSolicitud(id: Number) {
     this.dbapiService.finalizarSolicitud(id).subscribe({
       next: (response) => {
         console.log('Solicitud finalizada', response);
-        const solicitud = this.solicitudes.find(s => s._id === id);
+        const solicitud = this.solicitudes.find(s => s.idprestamo === id);
         if (solicitud) {
           solicitud.estado = 'Finalizado';
         }

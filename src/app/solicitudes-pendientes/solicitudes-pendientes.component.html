@@ -14,14 +14,14 @@
         <tbody>
             <tr *ngFor="let solicitud of solicitudes">
                 <td>{{ solicitud.idusuario }}</td>
-                <td>{{ solicitud.fecha }}</td>
-                <td>{{ formatearHora(solicitud.horainicio) }}</td>
+                <td>{{ solicitud.fecha.split('T')[0] }}</td>
+                <td>{{ formatearHora(solicitud.horaInicio) }}</td>
                 <td>{{ solicitud.estado | estado }}</td>
                 <td>{{ solicitud.observaciones }}</td>
                 <td>
                     <div class="actionButtons">
-                        <button class="green" (click)="aceptarSolicitud(solicitud._id)">Aceptar</button>
-                        <button class="red" (click)="rechazarSolicitud(solicitud._id)">Rechazar</button>
+                        <button class="green" (click)="aceptarSolicitud(solicitud.idprestamo)">Aceptar</button>
+                        <button class="red" (click)="rechazarSolicitud(solicitud.idprestamo)">Denegar</button>
                     </div>
                 </td>
             </tr>

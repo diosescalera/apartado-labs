@@ -25,7 +25,7 @@ export class CargarHorarioComponent implements OnInit {
 
   labs: Laboratorio[] = [];
   labsArray: string[] = [];
-  labsId: string[] = [];
+  labsId: Number[] = [];
   usuarios: Usuario[] = [];
   //vector para los checkboxes seleccionados
   diasSeleccionados: boolean[] = [false, false, false, false, false];
@@ -56,7 +56,7 @@ export class CargarHorarioComponent implements OnInit {
           (lab) => `${lab.departamento} ${lab.num_ed} ${lab.aula ?? ''}`
         );
 
-        this.labsId = this.labs.map((lab) => lab._id);
+        this.labsId = this.labs.map((lab) => lab.idlaboratorio);
       },
       error: (error) => {
         console.error('Error fetching laboratorios', error);
@@ -74,9 +74,11 @@ export class CargarHorarioComponent implements OnInit {
     const selectedIndex = Number(this.horario.idlaboratorio);
     if (selectedIndex >= 0 && selectedIndex < this.labs.length) {
       const selectedLab = this.labs[selectedIndex];
-      this.horario.idlaboratorio = selectedLab._id;
+      this.horario.idlaboratorio = selectedLab.idlaboratorio;
     }
     console.log('Horario', this.horario);
+    console.log('Formulario enviado', this.horario);
+
     this.dbapiService.cargarHorarioProfesor(this.horario).subscribe({
       next: (response) => {
         console.log('Horario cargado exitosamente', response);
