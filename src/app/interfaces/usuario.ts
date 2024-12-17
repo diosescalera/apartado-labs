@@ -1,8 +1,8 @@
 export interface Usuario {
     idusuario: number;
     nombre: string;
-    apellido: string;
-    carrera: string;
+    apellido: string | null;
+    carrera: string | null;
     correo: string;
     tipo: string;
     activo: number;
