@@ -16,7 +16,7 @@ export class DetallesLaboratorioComponent  {
   labsArray: string[] = [];
   labsId: string[] = [];
   solicitud  = {
-    _id: '',
+    idlaboratorio: 0,
     plantel: '',
     num_ed: 0,
     aula: '',

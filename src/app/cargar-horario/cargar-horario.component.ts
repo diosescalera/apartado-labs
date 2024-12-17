@@ -14,8 +14,8 @@ import { Usuario } from '../interfaces/usuario';
 })
 export class CargarHorarioComponent implements OnInit {
   horario: HorarioProfesor = {
-    _id: '',
-    idlaboratorio: '',
+    idhorario: 0,
+    idlaboratorio: 0,
     idusuario: 0,
     hora_inicio: '',
     hora_cierre: '',

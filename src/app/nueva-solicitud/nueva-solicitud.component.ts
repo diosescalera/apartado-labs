@@ -19,7 +19,7 @@ export class NuevaSolicitudComponent {
   errorMessage = '';
   successMessage = '';
   solicitud = {
-    idlaboratorio: '',
+    idlaboratorio: 0,
     idusuario: 0,
     fecha: '',
     horainicio: '',
