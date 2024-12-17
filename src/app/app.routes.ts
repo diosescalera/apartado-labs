@@ -10,6 +10,7 @@ import { CargarHorarioComponent } from "./cargar-horario/cargar-horario.componen
 import { NuevoMaterialComponent } from "./nuevo-material/nuevo-material.component";
 import { GestionarInventarioComponent } from "./gestionar-inventario/gestionar-inventario.component";
 import { DetallesLaboratorioComponent } from "./detalles-laboratorio/detalles-laboratorio.component";
+import { GraphComponent } from "./graph/graph.component";
 
 export const routes: Routes = [
     { path: '', component: InicioComponent },
@@ -23,4 +24,5 @@ export const routes: Routes = [
     { path: 'nuevo-material', component: NuevoMaterialComponent },
     { path: 'gestionar-inventario', component: GestionarInventarioComponent },
     { path: 'detalles-laboratorio', component: DetallesLaboratorioComponent },
+    { path: 'graph', component: GraphComponent },
 ];

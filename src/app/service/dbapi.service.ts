@@ -98,6 +98,12 @@ export class DbapiService {
     });
   }
 
+  // Obtener resumen de préstamos
+  // Endpoint backend: /prestamo/resumen
+  getResumen(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}prestamo/resumen`);
+  }
+
   // Obtener el estado de inicio de sesión decodificando el token
   // Endpoint backend: /auth/decode
   getLoginStatus(): Observable<boolean> {
